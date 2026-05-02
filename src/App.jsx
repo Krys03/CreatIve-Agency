@@ -94,7 +94,7 @@ function Header() {
         </nav>
         <div className="flex items-center gap-3">
           <span className="h-2 w-2 rounded-full bg-electric" />
-          <span>PARIS — GLOBAL</span>
+          <span>FRIBOURG — GLOBAL</span>
         </div>
       </div>
     </header>
