@@ -120,7 +120,7 @@ function Hero() {
         <div className="col-span-4 md:col-span-8">
           <motion.h1
             variants={fadeUp}
-            className="hero-title font-display uppercase leading-[0.92] tracking-normal text-ink md:leading-[0.9]"
+            className="hero-title font-display uppercase leading-[0.98] tracking-normal text-ink md:leading-[0.96]"
           >
             ON CRÉE
             <br />
@@ -132,7 +132,7 @@ function Hero() {
           </motion.h1>
           <motion.p
             variants={fadeUp}
-            className="mt-8 max-w-2xl text-[12px] font-semibold uppercase leading-6 tracking-[0.14em] text-ink md:ml-2 md:text-sm"
+            className="mt-10 max-w-2xl text-[12px] font-semibold uppercase leading-7 tracking-[0.15em] text-ink md:ml-2 md:mt-12 md:text-sm"
           >
             STUDIO CRÉATIF POUR MARQUES AMBITIEUSES.
             <br />
@@ -228,7 +228,7 @@ function About() {
         </motion.p>
         <motion.p
           variants={fadeUp}
-          className="mx-auto max-w-5xl font-display text-[clamp(2.6rem,6.4vw,7.4rem)] uppercase leading-[0.94] text-ink"
+          className="mx-auto max-w-5xl font-display text-[clamp(2.6rem,6.4vw,7.4rem)] uppercase leading-[1.02] text-ink"
         >
           NOUS DONNONS DU SENS AUX CRÉATIONS AU SERVICE DES MARQUES AMBITIEUSES, DE LA CONCEPTION À LA DIFFUSION.
           STRATÉGIE, CRÉATIVITÉ ET TECHNOLOGIE AU SERVICE DES MARQUES EN MOUVEMENT.
@@ -244,7 +244,7 @@ function FeaturedProjects() {
   return (
     <section id="projets" className="horizontal-section overflow-hidden border-b border-line bg-white py-20 md:py-28">
       <div className="grid-layout mb-14 grid grid-cols-4 items-end gap-y-6 md:grid-cols-12">
-        <h2 className="col-span-4 max-w-3xl font-display text-[clamp(3.4rem,8vw,9rem)] uppercase leading-[0.86] text-ink md:col-span-7">
+        <h2 className="col-span-4 max-w-3xl font-display text-[clamp(3.4rem,8vw,9rem)] uppercase leading-[0.94] text-ink md:col-span-7">
           NOS PROJETS MARQUANTS
         </h2>
         <a className="micro-copy col-span-2 text-electric md:col-span-3 md:justify-self-end" href="#portfolio">
@@ -264,7 +264,7 @@ function FeaturedProjects() {
             <div className="flex items-start justify-between gap-8 border-t border-line pt-5">
               <div>
                 <p className="micro-copy text-electric/70 transition-colors group-hover:text-electric">{label}</p>
-                <h3 className="mt-3 max-w-[18rem] font-display text-5xl uppercase leading-[0.92] text-ink md:text-6xl">{title}</h3>
+                <h3 className="mt-4 max-w-[18rem] font-display text-5xl uppercase leading-[1.02] text-ink md:text-6xl">{title}</h3>
               </div>
               <span className="micro-copy text-ink">{number}</span>
             </div>
@@ -309,7 +309,7 @@ function PortfolioGrid() {
     <section id="portfolio" className="border-b border-line bg-white py-24 md:py-36">
       <div className="grid-layout">
         <div className="mb-14 flex flex-col justify-between gap-8 border-b border-line pb-8 md:flex-row md:items-end">
-          <h2 className="font-display text-[clamp(3.4rem,8vw,9rem)] uppercase leading-[0.86] text-ink">NOTRE PORTFOLIO</h2>
+          <h2 className="font-display text-[clamp(3.4rem,8vw,9rem)] uppercase leading-[0.94] text-ink">NOTRE PORTFOLIO</h2>
           <a href="#contact" className="micro-copy text-electric">
             VOIR TOUS LES PROJETS →
           </a>
@@ -345,7 +345,7 @@ function CTA() {
         </motion.p>
         <motion.h2
           variants={fadeUp}
-          className="mx-auto max-w-6xl font-display text-[clamp(4rem,11vw,12rem)] uppercase leading-[0.84] text-ink"
+          className="mx-auto max-w-6xl font-display text-[clamp(4rem,11vw,12rem)] uppercase leading-[0.92] text-ink"
         >
           PARLONS DE VOTRE PROCHAIN MOUVEMENT.
         </motion.h2>
