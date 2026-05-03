@@ -124,18 +124,6 @@ a {
   color: #155bff;
 }
 
-.nav-link.is-active::before {
-  position: absolute;
-  bottom: -0.88rem;
-  left: 50%;
-  width: 0.48rem;
-  height: 0.48rem;
-  content: "";
-  background: #155bff;
-  border-radius: 999px;
-  transform: translateX(-50%);
-}
-
 .play-button {
   position: relative;
   display: grid;
