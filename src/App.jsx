@@ -221,16 +221,22 @@ function ShowreelReveal() {
   )
 }
 
-function AboutShapes() {
+function AboutShapes({ motionValues }) {
   return (
     <div className="about-shapes" aria-hidden="true">
-      <motion.div className="about-shape shape-left-sphere" animate={{ y: [0, -14, 0] }} transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="about-shape shape-left-capsule" animate={{ y: [0, 16, 0], rotate: [-34, -30, -34] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="about-shape shape-bottom-oval" animate={{ y: [0, -18, 0] }} transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="about-shape shape-right-blob" animate={{ y: [0, 12, 0], rotate: [8, 11, 8] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}>
+      <motion.div className="about-shape shape-left-sphere" style={{ y: motionValues.leftSphereY, scale: motionValues.leftSphereScale }} />
+      <motion.div
+        className="about-shape shape-left-capsule"
+        style={{ y: motionValues.leftCapsuleY, x: motionValues.leftCapsuleX, rotate: motionValues.leftCapsuleRotate }}
+      />
+      <motion.div className="about-shape shape-bottom-oval" style={{ y: motionValues.bottomOvalY, scale: motionValues.bottomOvalScale }} />
+      <motion.div
+        className="about-shape shape-right-blob"
+        style={{ y: motionValues.rightBlobY, x: motionValues.rightBlobX, rotate: motionValues.rightBlobRotate }}
+      >
         <span className="shape-triangle" />
       </motion.div>
-      <motion.div className="about-shape shape-right-sphere" animate={{ y: [0, -10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}>
+      <motion.div className="about-shape shape-right-sphere" style={{ y: motionValues.rightSphereY, x: motionValues.rightSphereX }}>
         <span className="shape-cross" />
       </motion.div>
       <span className="about-curve curve-left" />
@@ -244,10 +250,25 @@ function AboutShapes() {
 
 function About() {
   const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
+  const motionValues = {
+    leftSphereY: useTransform(scrollYProgress, [0, 1], ['-6%', '10%']),
+    leftSphereScale: useTransform(scrollYProgress, [0, 1], [1.03, 0.98]),
+    leftCapsuleY: useTransform(scrollYProgress, [0, 1], ['10%', '-12%']),
+    leftCapsuleX: useTransform(scrollYProgress, [0, 1], ['-4%', '5%']),
+    leftCapsuleRotate: useTransform(scrollYProgress, [0, 1], [-38, -28]),
+    bottomOvalY: useTransform(scrollYProgress, [0, 1], ['8%', '-10%']),
+    bottomOvalScale: useTransform(scrollYProgress, [0, 1], [0.96, 1.04]),
+    rightBlobY: useTransform(scrollYProgress, [0, 1], ['-9%', '10%']),
+    rightBlobX: useTransform(scrollYProgress, [0, 1], ['5%', '-4%']),
+    rightBlobRotate: useTransform(scrollYProgress, [0, 1], [4, 13]),
+    rightSphereY: useTransform(scrollYProgress, [0, 1], ['9%', '-12%']),
+    rightSphereX: useTransform(scrollYProgress, [0, 1], ['-3%', '4%']),
+  }
 
   return (
     <section id="approche" ref={sectionRef} className="about-section grid-bg border-b border-line">
-      <AboutShapes />
+      <AboutShapes motionValues={motionValues} />
       <motion.div
         variants={stagger}
         initial="hidden"

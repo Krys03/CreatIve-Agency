@@ -308,7 +308,20 @@ a {
     inset -34px -42px 80px rgba(185, 196, 210, 0.28),
     0 48px 120px rgba(81, 94, 115, 0.13);
   filter: saturate(0.92);
-  will-change: transform;
+  animation: aboutShapeFloat 9s ease-in-out infinite;
+  transition:
+    filter 500ms ease,
+    box-shadow 500ms ease;
+  will-change: transform, translate;
+}
+
+.about-section:hover .about-shape {
+  filter: saturate(0.96) brightness(1.015);
+  animation-duration: 6.4s;
+  box-shadow:
+    inset 26px 30px 66px rgba(255, 255, 255, 0.9),
+    inset -36px -44px 86px rgba(185, 196, 210, 0.31),
+    0 54px 132px rgba(81, 94, 115, 0.16);
 }
 
 .shape-left-sphere {
@@ -326,6 +339,7 @@ a {
   height: clamp(21rem, 27vw, 29rem);
   border-radius: 999px;
   transform: rotate(-34deg);
+  animation-delay: -2.1s;
 }
 
 .shape-bottom-oval {
@@ -336,6 +350,7 @@ a {
   border-radius: 50%;
   background:
     radial-gradient(circle at 35% 26%, rgba(255, 255, 255, 0.98) 0 8%, rgba(246, 247, 249, 0.95) 25%, rgba(232, 236, 242, 0.92) 62%, rgba(213, 221, 232, 0.84) 100%);
+  animation-delay: -4.4s;
 }
 
 .shape-right-blob {
@@ -345,6 +360,7 @@ a {
   height: clamp(20rem, 28vw, 34rem);
   border-radius: 33% 42% 36% 45% / 40% 34% 44% 38%;
   transform: rotate(8deg);
+  animation-delay: -1.2s;
 }
 
 .shape-right-sphere {
@@ -353,6 +369,7 @@ a {
   width: clamp(11rem, 17vw, 21rem);
   aspect-ratio: 1;
   border-radius: 50%;
+  animation-delay: -3.2s;
 }
 
 .about-curve {
@@ -361,6 +378,17 @@ a {
   border-color: transparent transparent rgba(255, 255, 255, 0.78) rgba(255, 255, 255, 0.78);
   border-radius: 50%;
   filter: drop-shadow(0 1px 0 rgba(221, 227, 235, 0.8));
+  transition:
+    opacity 420ms ease,
+    translate 520ms ease;
+}
+
+.about-section:hover .curve-left {
+  translate: -0.5rem -0.7rem;
+}
+
+.about-section:hover .curve-right {
+  translate: 0.55rem 0.85rem;
 }
 
 .curve-left {
@@ -424,6 +452,9 @@ a {
   background: #155bff;
   border-radius: 999px;
   box-shadow: 0 18px 46px rgba(21, 91, 255, 0.26);
+  transition:
+    transform 420ms ease,
+    box-shadow 420ms ease;
 }
 
 .blue-pill {
@@ -435,6 +466,9 @@ a {
   border-radius: 999px;
   box-shadow: 0 18px 48px rgba(21, 91, 255, 0.2);
   transform: rotate(20deg);
+  transition:
+    transform 420ms ease,
+    box-shadow 420ms ease;
 }
 
 .blue-hex {
@@ -445,6 +479,35 @@ a {
   background: #155bff;
   clip-path: polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0 50%);
   box-shadow: 0 18px 40px rgba(21, 91, 255, 0.22);
+  transition:
+    transform 420ms ease,
+    box-shadow 420ms ease;
+}
+
+.about-section:hover .blue-dot-left {
+  transform: translateY(-0.42rem) scale(1.08);
+  box-shadow: 0 22px 56px rgba(21, 91, 255, 0.32);
+}
+
+.about-section:hover .blue-pill {
+  transform: rotate(20deg) translateY(-0.5rem) scale(1.04);
+  box-shadow: 0 24px 58px rgba(21, 91, 255, 0.28);
+}
+
+.about-section:hover .blue-hex {
+  transform: translate(0.35rem, -0.45rem) rotate(10deg);
+  box-shadow: 0 24px 52px rgba(21, 91, 255, 0.3);
+}
+
+@keyframes aboutShapeFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -1rem;
+  }
 }
 
 .tech-cluster {
