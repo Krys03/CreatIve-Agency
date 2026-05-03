@@ -17,15 +17,6 @@ const stagger = {
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.08 } },
 }
 
-const clusterReveal = {
-  hidden: { opacity: 0, scale: 0.92 },
-  show: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
-  },
-}
-
 const projectImages = [
   'https://images.unsplash.com/photo-1635405050330-b0824eb1bf26?auto=format&fit=crop&w=1100&q=85',
   'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1100&q=85',
@@ -90,13 +81,21 @@ const portfolioItems = [
 function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-white/95 backdrop-blur-md">
-      <div className="grid-layout flex h-16 items-center justify-between text-[11px] font-semibold uppercase tracking-[0.14em] text-ink">
-        <a href="#top" className="font-display text-xl tracking-normal">
-          VOLTAGE STUDIO
+      <div className="grid-layout flex h-20 items-center justify-between text-[11px] font-semibold uppercase tracking-[0.14em] text-ink">
+        <a href="#top" className="header-logo font-display tracking-normal">
+          <span>VOLTAGE</span>
+          <span>STUDIO</span>
         </a>
         <nav className="hidden items-center gap-10 md:flex">
-          {['PROJETS', 'APPROCHE', 'STUDIO', 'CONTACT'].map((item) => (
-            <a className="nav-link" href={`#${item.toLowerCase()}`} key={item}>
+          {[
+            ['ACCUEIL', '#top'],
+            ['À PROPOS', '#approche'],
+            ['SERVICES', '#studio'],
+            ['RÉALISATIONS', '#portfolio'],
+            ['JOURNAL', '#portfolio'],
+            ['CONTACT', '#contact'],
+          ].map(([item, href]) => (
+            <a className={`nav-link ${item === 'À PROPOS' ? 'is-active' : ''}`} href={href} key={item}>
               {item}
             </a>
           ))}
@@ -222,100 +221,33 @@ function ShowreelReveal() {
   )
 }
 
-function TechCluster({ side, y }) {
-  const isLeft = side === 'left'
-
+function AboutShapes() {
   return (
-    <motion.div
-      variants={clusterReveal}
-      className={`tech-cluster tech-cluster-${side}`}
-      style={{ y }}
-      aria-hidden="true"
-    >
-      {isLeft ? (
-        <>
-          <div className="tech-object tech-browser">
-            <div className="tech-window-bar">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="tech-browser-grid">
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div className="tech-object tech-ui-card">
-            <span className="tech-label">UI MODULE</span>
-            <div className="tech-ui-lines">
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div className="tech-object tech-play-mini">
-            <span />
-          </div>
-          <div className="tech-object tech-cursor-ring" />
-          <div className="tech-object tech-chip-module">MOTION</div>
-          <div className="tech-object tech-mini-node">
-            <span />
-            <span />
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="tech-object tech-timeline">
-            <div className="tech-timeline-track">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="tech-timeline-dots">
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div className="tech-object tech-stats-card">
-            <span className="tech-label">DASH</span>
-            <strong>84</strong>
-            <div>
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div className="tech-object tech-brand-chip">BRAND OS</div>
-          <div className="tech-object tech-wire-cube">
-            <span />
-            <span />
-          </div>
-          <div className="tech-object tech-progress">
-            <span />
-          </div>
-          <div className="tech-object tech-small-panel">
-            <span />
-            <span />
-            <span />
-          </div>
-        </>
-      )}
-    </motion.div>
+    <div className="about-shapes" aria-hidden="true">
+      <motion.div className="about-shape shape-left-sphere" animate={{ y: [0, -14, 0] }} transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }} />
+      <motion.div className="about-shape shape-left-capsule" animate={{ y: [0, 16, 0], rotate: [-34, -30, -34] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} />
+      <motion.div className="about-shape shape-bottom-oval" animate={{ y: [0, -18, 0] }} transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }} />
+      <motion.div className="about-shape shape-right-blob" animate={{ y: [0, 12, 0], rotate: [8, 11, 8] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}>
+        <span className="shape-triangle" />
+      </motion.div>
+      <motion.div className="about-shape shape-right-sphere" animate={{ y: [0, -10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}>
+        <span className="shape-cross" />
+      </motion.div>
+      <span className="about-curve curve-left" />
+      <span className="about-curve curve-right" />
+      <span className="blue-dot blue-dot-left" />
+      <span className="blue-pill" />
+      <span className="blue-hex" />
+    </div>
   )
 }
 
 function About() {
   const sectionRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
-  const leftY = useTransform(scrollYProgress, [0, 1], ['4%', '-8%'])
-  const rightY = useTransform(scrollYProgress, [0, 1], ['-3%', '7%'])
 
   return (
-    <section id="approche" ref={sectionRef} className="about-section border-b border-line bg-white py-32 md:py-48">
+    <section id="approche" ref={sectionRef} className="about-section grid-bg border-b border-line">
+      <AboutShapes />
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -323,7 +255,6 @@ function About() {
         viewport={{ once: true, margin: '-15%' }}
         className="grid-layout about-grid"
       >
-        <TechCluster side="left" y={leftY} />
         <div className="about-copy text-center">
           <motion.p variants={fadeUp} className="micro-copy mb-10 text-electric">
             À PROPOS
@@ -334,15 +265,17 @@ function About() {
           >
             ON DONNE FORME
             <br />
-            AUX MARQUES AMBITIEUSES.
+            AUX MARQUES
+            <br />
+            AMBITIEUSES.
           </motion.h2>
+          <motion.span variants={fadeUp} className="about-blue-line" />
           <motion.p variants={fadeUp} className="about-text mx-auto mt-8">
             Stratégie, identité, digital et motion.
             <br />
             Des systèmes créatifs pensés pour durer.
           </motion.p>
         </div>
-        <TechCluster side="right" y={rightY} />
       </motion.div>
     </section>
   )

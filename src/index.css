@@ -79,6 +79,24 @@ a {
   font-size: clamp(3rem, 15.2vw, 5.8rem);
 }
 
+.header-logo {
+  display: grid;
+  gap: 0.12rem;
+  line-height: 0.9;
+}
+
+.header-logo span:first-child {
+  font-size: 1.85rem;
+}
+
+.header-logo span:last-child {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.48em;
+  text-align: center;
+}
+
 .nav-link {
   position: relative;
   padding-block: 0.4rem;
@@ -100,6 +118,22 @@ a {
 .nav-link:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.nav-link.is-active {
+  color: #155bff;
+}
+
+.nav-link.is-active::before {
+  position: absolute;
+  bottom: -0.88rem;
+  left: 50%;
+  width: 0.48rem;
+  height: 0.48rem;
+  content: "";
+  background: #155bff;
+  border-radius: 999px;
+  transform: translateX(-50%);
 }
 
 .play-button {
@@ -206,26 +240,31 @@ a {
 }
 
 .about-section {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
   overflow: hidden;
+  background-color: #f8f9fb;
+  padding-block: clamp(8rem, 13vh, 11rem) clamp(7rem, 12vh, 10rem);
 }
 
 .about-grid {
-  display: grid;
-  grid-template-columns: minmax(10rem, 0.72fr) minmax(0, 2.05fr) minmax(10rem, 0.72fr);
-  align-items: center;
-  gap: clamp(1.5rem, 4vw, 5rem);
+  position: relative;
+  z-index: 3;
+  display: block;
 }
 
 .about-copy {
   position: relative;
   z-index: 3;
-  max-width: 680px;
+  max-width: 760px;
   margin-inline: auto;
 }
 
 .about-title {
-  font-size: clamp(3rem, 4.4vw, 5.4rem);
-  line-height: 0.9;
+  font-size: clamp(4.6rem, 6.9vw, 8.6rem);
+  line-height: 0.88;
 }
 
 .about-text {
@@ -234,6 +273,178 @@ a {
   font-size: clamp(1.125rem, 1.35vw, 1.25rem);
   font-weight: 500;
   line-height: 1.45;
+}
+
+.about-blue-line {
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin: clamp(1.6rem, 3vw, 2.5rem) auto 0;
+  background: #155bff;
+}
+
+.about-shapes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.about-shape,
+.about-curve,
+.blue-dot,
+.blue-pill,
+.blue-hex {
+  position: absolute;
+  display: block;
+}
+
+.about-shape {
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.98) 0 8%, rgba(246, 247, 249, 0.96) 23%, rgba(232, 236, 242, 0.94) 58%, rgba(221, 227, 235, 0.88) 100%);
+  box-shadow:
+    inset 24px 28px 62px rgba(255, 255, 255, 0.88),
+    inset -34px -42px 80px rgba(185, 196, 210, 0.28),
+    0 48px 120px rgba(81, 94, 115, 0.13);
+  filter: saturate(0.92);
+  will-change: transform;
+}
+
+.shape-left-sphere {
+  top: -12%;
+  left: -17%;
+  width: clamp(23rem, 34vw, 42rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.shape-left-capsule {
+  top: 33%;
+  left: 16%;
+  width: clamp(10rem, 18vw, 18rem);
+  height: clamp(21rem, 27vw, 29rem);
+  border-radius: 999px;
+  transform: rotate(-34deg);
+}
+
+.shape-bottom-oval {
+  right: 29%;
+  bottom: -28%;
+  width: clamp(26rem, 43vw, 54rem);
+  aspect-ratio: 1.08;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 26%, rgba(255, 255, 255, 0.98) 0 8%, rgba(246, 247, 249, 0.95) 25%, rgba(232, 236, 242, 0.92) 62%, rgba(213, 221, 232, 0.84) 100%);
+}
+
+.shape-right-blob {
+  top: 18%;
+  right: -4%;
+  width: clamp(21rem, 31vw, 39rem);
+  height: clamp(20rem, 28vw, 34rem);
+  border-radius: 33% 42% 36% 45% / 40% 34% 44% 38%;
+  transform: rotate(8deg);
+}
+
+.shape-right-sphere {
+  right: 11%;
+  bottom: -3%;
+  width: clamp(11rem, 17vw, 21rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.about-curve {
+  z-index: 2;
+  border: 9px solid rgba(255, 255, 255, 0.78);
+  border-color: transparent transparent rgba(255, 255, 255, 0.78) rgba(255, 255, 255, 0.78);
+  border-radius: 50%;
+  filter: drop-shadow(0 1px 0 rgba(221, 227, 235, 0.8));
+}
+
+.curve-left {
+  left: 28%;
+  bottom: -4%;
+  width: 45rem;
+  height: 45rem;
+  transform: rotate(30deg);
+}
+
+.curve-right {
+  top: -18%;
+  right: 9%;
+  width: 34rem;
+  height: 50rem;
+  border-width: 8px;
+  transform: rotate(-16deg);
+}
+
+.shape-triangle {
+  position: absolute;
+  right: 24%;
+  top: 34%;
+  width: 6.3rem;
+  aspect-ratio: 1;
+  border: 10px solid rgba(255, 255, 255, 0.72);
+  clip-path: polygon(50% 7%, 92% 83%, 8% 83%);
+  filter: drop-shadow(0 14px 28px rgba(149, 162, 181, 0.16));
+}
+
+.shape-cross {
+  position: absolute;
+  top: 48%;
+  left: 56%;
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.shape-cross::before,
+.shape-cross::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.7rem;
+  height: 0.28rem;
+  content: "";
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+}
+
+.shape-cross::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.blue-dot-left {
+  left: 14%;
+  bottom: 25%;
+  width: 2.35rem;
+  aspect-ratio: 1;
+  background: #155bff;
+  border-radius: 999px;
+  box-shadow: 0 18px 46px rgba(21, 91, 255, 0.26);
+}
+
+.blue-pill {
+  top: 24%;
+  right: 30%;
+  width: 4.8rem;
+  height: 1.95rem;
+  background: #155bff;
+  border-radius: 999px;
+  box-shadow: 0 18px 48px rgba(21, 91, 255, 0.2);
+  transform: rotate(20deg);
+}
+
+.blue-hex {
+  right: 28%;
+  bottom: 14%;
+  width: 2rem;
+  aspect-ratio: 1;
+  background: #155bff;
+  clip-path: polygon(25% 7%, 75% 7%, 100% 50%, 75% 93%, 25% 93%, 0 50%);
+  box-shadow: 0 18px 40px rgba(21, 91, 255, 0.22);
 }
 
 .tech-cluster {
@@ -844,16 +1055,10 @@ a {
 }
 
 @media (max-width: 1180px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-copy {
-    max-width: 68rem;
-    margin-inline: auto;
-  }
-
-  .tech-cluster {
+  .shape-left-capsule,
+  .shape-triangle,
+  .curve-right,
+  .blue-hex {
     display: none;
   }
 }
@@ -889,5 +1094,49 @@ a {
 
   .custom-cursor {
     display: none;
+  }
+
+  .about-section {
+    min-height: 86svh;
+    padding-block: 8rem 7rem;
+  }
+
+  .about-title {
+    font-size: clamp(3.6rem, 15vw, 5.6rem);
+  }
+
+  .about-text {
+    font-size: 1rem;
+  }
+
+  .shape-left-sphere {
+    top: -5%;
+    left: -48%;
+    width: 23rem;
+  }
+
+  .shape-bottom-oval {
+    right: -32%;
+    bottom: -22%;
+    width: 27rem;
+  }
+
+  .shape-right-blob {
+    top: 19%;
+    right: -35%;
+    width: 18rem;
+    height: 18rem;
+  }
+
+  .shape-right-sphere,
+  .curve-left,
+  .blue-pill {
+    display: none;
+  }
+
+  .blue-dot-left {
+    left: 12%;
+    bottom: 17%;
+    width: 1.45rem;
   }
 }
