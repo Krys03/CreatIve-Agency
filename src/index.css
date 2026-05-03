@@ -158,13 +158,13 @@ a {
 }
 
 .showreel-reveal {
-  min-height: 150vh;
+  min-height: 245vh;
 }
 
 .showreel-video {
   position: relative;
   display: grid;
-  width: min(calc(100vw - 2.5rem), 1360px);
+  width: min(100vw, 1800px);
   aspect-ratio: 16 / 9;
   place-items: center;
   overflow: hidden;
@@ -1191,7 +1191,7 @@ a {
   }
 
   .showreel-video {
-    width: min(calc(100vw - 1.5rem), 1360px);
+    width: min(calc(100vw - 1rem), 1360px);
     aspect-ratio: 4 / 5;
   }
 

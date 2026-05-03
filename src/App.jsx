@@ -160,14 +160,15 @@ function Hero() {
 
 function ShowreelReveal() {
   const sectionRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
-  const scale = useTransform(scrollYProgress, [0.15, 0.75], [0.35, 1])
-  const borderRadius = useTransform(scrollYProgress, [0.15, 0.75], ['24px', '8px'])
-  const opacity = useTransform(scrollYProgress, [0.15, 0.35], [0.4, 1])
-  const clipPath = useTransform(scrollYProgress, [0.15, 0.75], ['inset(20% 30% 20% 30%)', 'inset(0% 0% 0% 0%)'])
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
+  const scale = useTransform(scrollYProgress, [0, 0.34, 1], [0.24, 1.46, 1.46])
+  const borderRadius = useTransform(scrollYProgress, [0, 0.34, 1], ['30px', '0px', '0px'])
+  const opacity = useTransform(scrollYProgress, [0, 0.14], [0.45, 1])
+  const clipPath = useTransform(scrollYProgress, [0, 0.34, 1], ['inset(24% 34% 24% 34%)', 'inset(0% 0% 0% 0%)', 'inset(0% 0% 0% 0%)'])
+  const videoY = useTransform(scrollYProgress, [0, 0.34, 1], ['2.5vh', '0vh', '0vh'])
 
   return (
-    <section ref={sectionRef} className="showreel-reveal grid-bg relative h-[165vh] border-b border-line">
+    <section ref={sectionRef} className="showreel-reveal grid-bg relative h-[245vh] border-b border-line">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden pt-16">
         <div className="grid-layout absolute inset-x-0 top-24 z-10 grid grid-cols-4 items-start md:grid-cols-12">
           <motion.div
@@ -194,7 +195,7 @@ function ShowreelReveal() {
         </div>
         <motion.div
           className="showreel-video mx-auto"
-          style={{ scale, borderRadius, opacity, clipPath }}
+          style={{ scale, y: videoY, borderRadius, opacity, clipPath }}
           data-cursor
           data-cursor-label="PLAY"
         >
