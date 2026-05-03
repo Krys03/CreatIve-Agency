@@ -17,6 +17,15 @@ const stagger = {
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.08 } },
 }
 
+const clusterReveal = {
+  hidden: { opacity: 0, scale: 0.92 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
 const projectImages = [
   'https://images.unsplash.com/photo-1635405050330-b0824eb1bf26?auto=format&fit=crop&w=1100&q=85',
   'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1100&q=85',
@@ -213,26 +222,121 @@ function ShowreelReveal() {
   )
 }
 
-function About() {
+function TechCluster({ side, y }) {
+  const isLeft = side === 'left'
+
   return (
-    <section id="approche" className="border-b border-line bg-white py-32 md:py-48">
+    <motion.div
+      variants={clusterReveal}
+      className={`tech-cluster tech-cluster-${side}`}
+      style={{ y }}
+      aria-hidden="true"
+    >
+      {isLeft ? (
+        <>
+          <div className="tech-object tech-browser">
+            <div className="tech-window-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="tech-browser-grid">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+          <div className="tech-object tech-ui-card">
+            <span className="tech-label">UI MODULE</span>
+            <div className="tech-ui-lines">
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+          <div className="tech-object tech-play-mini">
+            <span />
+          </div>
+          <div className="tech-object tech-cursor-ring" />
+          <div className="tech-object tech-chip-module">MOTION</div>
+          <div className="tech-object tech-mini-node">
+            <span />
+            <span />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="tech-object tech-timeline">
+            <div className="tech-timeline-track">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="tech-timeline-dots">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+          <div className="tech-object tech-stats-card">
+            <span className="tech-label">DASH</span>
+            <strong>84</strong>
+            <div>
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+          <div className="tech-object tech-brand-chip">BRAND OS</div>
+          <div className="tech-object tech-wire-cube">
+            <span />
+            <span />
+          </div>
+          <div className="tech-object tech-progress">
+            <span />
+          </div>
+          <div className="tech-object tech-small-panel">
+            <span />
+            <span />
+            <span />
+          </div>
+        </>
+      )}
+    </motion.div>
+  )
+}
+
+function About() {
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
+  const leftY = useTransform(scrollYProgress, [0, 1], ['4%', '-8%'])
+  const rightY = useTransform(scrollYProgress, [0, 1], ['-3%', '7%'])
+
+  return (
+    <section id="approche" ref={sectionRef} className="about-section border-b border-line bg-white py-32 md:py-48">
       <motion.div
         variants={stagger}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-15%' }}
-        className="grid-layout text-center"
+        className="grid-layout about-grid"
       >
-        <motion.p variants={fadeUp} className="micro-copy mb-12 text-electric">
-          À PROPOS
-        </motion.p>
-        <motion.p
-          variants={fadeUp}
-          className="mx-auto max-w-5xl font-display text-[clamp(2.6rem,6.4vw,7.4rem)] uppercase leading-[1.02] text-ink"
-        >
-          NOUS DONNONS DU SENS AUX CRÉATIONS AU SERVICE DES MARQUES AMBITIEUSES, DE LA CONCEPTION À LA DIFFUSION.
-          STRATÉGIE, CRÉATIVITÉ ET TECHNOLOGIE AU SERVICE DES MARQUES EN MOUVEMENT.
-        </motion.p>
+        <TechCluster side="left" y={leftY} />
+        <div className="about-copy text-center">
+          <motion.p variants={fadeUp} className="micro-copy mb-12 text-electric">
+            À PROPOS
+          </motion.p>
+          <motion.p
+            variants={fadeUp}
+            className="mx-auto max-w-5xl font-display text-[clamp(2.6rem,6.4vw,7.4rem)] uppercase leading-[1.02] text-ink"
+          >
+            NOUS DONNONS DU SENS AUX CRÉATIONS AU SERVICE DES MARQUES AMBITIEUSES, DE LA CONCEPTION À LA DIFFUSION.
+            STRATÉGIE, CRÉATIVITÉ ET TECHNOLOGIE AU SERVICE DES MARQUES EN MOUVEMENT.
+          </motion.p>
+        </div>
+        <TechCluster side="right" y={rightY} />
       </motion.div>
     </section>
   )
