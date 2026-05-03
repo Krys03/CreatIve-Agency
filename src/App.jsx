@@ -161,10 +161,10 @@ function Hero() {
 function ShowreelReveal() {
   const sectionRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
-  const scale = useTransform(scrollYProgress, [0, 0.34, 1], [0.24, 1.46, 1.46])
-  const borderRadius = useTransform(scrollYProgress, [0, 0.34, 1], ['30px', '0px', '0px'])
+  const scale = useTransform(scrollYProgress, [0, 0.16, 0.34, 1], [0.28, 0.42, 1.46, 1.46])
+  const borderRadius = useTransform(scrollYProgress, [0, 0.18, 0.34, 1], ['999px', '999px', '0px', '0px'])
   const opacity = useTransform(scrollYProgress, [0, 0.14], [0.45, 1])
-  const clipPath = useTransform(scrollYProgress, [0, 0.34, 1], ['inset(24% 34% 24% 34%)', 'inset(0% 0% 0% 0%)', 'inset(0% 0% 0% 0%)'])
+  const clipPath = useTransform(scrollYProgress, [0, 0.18, 0.34, 1], ['circle(22% at 50% 50%)', 'circle(22% at 50% 50%)', 'circle(130% at 50% 50%)', 'circle(130% at 50% 50%)'])
   const videoY = useTransform(scrollYProgress, [0, 0.34, 1], ['2.5vh', '0vh', '0vh'])
 
   return (
