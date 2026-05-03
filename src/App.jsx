@@ -325,15 +325,21 @@ function About() {
       >
         <TechCluster side="left" y={leftY} />
         <div className="about-copy text-center">
-          <motion.p variants={fadeUp} className="micro-copy mb-12 text-electric">
+          <motion.p variants={fadeUp} className="micro-copy mb-10 text-electric">
             À PROPOS
           </motion.p>
-          <motion.p
+          <motion.h2
             variants={fadeUp}
-            className="mx-auto max-w-5xl font-display text-[clamp(2.6rem,6.4vw,7.4rem)] uppercase leading-[1.02] text-ink"
+            className="about-title mx-auto font-display uppercase text-ink"
           >
-            NOUS DONNONS DU SENS AUX CRÉATIONS AU SERVICE DES MARQUES AMBITIEUSES, DE LA CONCEPTION À LA DIFFUSION.
-            STRATÉGIE, CRÉATIVITÉ ET TECHNOLOGIE AU SERVICE DES MARQUES EN MOUVEMENT.
+            ON DONNE FORME
+            <br />
+            AUX MARQUES AMBITIEUSES.
+          </motion.h2>
+          <motion.p variants={fadeUp} className="about-text mx-auto mt-8">
+            Stratégie, identité, digital et motion.
+            <br />
+            Des systèmes créatifs pensés pour durer.
           </motion.p>
         </div>
         <TechCluster side="right" y={rightY} />
