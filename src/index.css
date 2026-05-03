@@ -146,20 +146,20 @@ a {
 }
 
 .showreel-reveal {
-  min-height: 245vh;
+  min-height: 112svh;
 }
 
 .showreel-video {
   position: relative;
   display: grid;
-  width: min(100vw, 1800px);
+  width: min(calc(100vw - 2.5rem), 1360px);
   aspect-ratio: 16 / 9;
   place-items: center;
   overflow: hidden;
   border: 1px solid #e5e5e5;
+  border-radius: 8px;
   background: #f5f5f1;
   transform-origin: center;
-  will-change: transform, clip-path, opacity, border-radius;
 }
 
 .showreel-video::before {

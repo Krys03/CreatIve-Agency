@@ -159,17 +159,9 @@ function Hero() {
 }
 
 function ShowreelReveal() {
-  const sectionRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
-  const scale = useTransform(scrollYProgress, [0, 0.16, 0.34, 1], [0.28, 0.42, 1.46, 1.46])
-  const borderRadius = useTransform(scrollYProgress, [0, 0.18, 0.34, 1], ['999px', '999px', '0px', '0px'])
-  const opacity = useTransform(scrollYProgress, [0, 0.14], [0.45, 1])
-  const clipPath = useTransform(scrollYProgress, [0, 0.18, 0.34, 1], ['circle(22% at 50% 50%)', 'circle(22% at 50% 50%)', 'circle(130% at 50% 50%)', 'circle(130% at 50% 50%)'])
-  const videoY = useTransform(scrollYProgress, [0, 0.34, 1], ['2.5vh', '0vh', '0vh'])
-
   return (
-    <section ref={sectionRef} className="showreel-reveal grid-bg relative h-[245vh] border-b border-line">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden pt-16">
+    <section className="showreel-reveal grid-bg relative border-b border-line">
+      <div className="flex min-h-[112svh] items-center overflow-hidden pt-16">
         <div className="grid-layout absolute inset-x-0 top-24 z-10 grid grid-cols-4 items-start md:grid-cols-12">
           <motion.div
             variants={fadeUp}
@@ -193,9 +185,8 @@ function ShowreelReveal() {
             VOIR LE SHOWREEL →
           </motion.a>
         </div>
-        <motion.div
+        <div
           className="showreel-video mx-auto"
-          style={{ scale, y: videoY, borderRadius, opacity, clipPath }}
           data-cursor
           data-cursor-label="PLAY"
         >
@@ -216,7 +207,7 @@ function ShowreelReveal() {
           >
             <span />
           </motion.button>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
