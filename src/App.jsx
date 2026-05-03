@@ -239,11 +239,11 @@ function AboutShapes({ motionValues }) {
       <motion.div className="about-shape shape-right-sphere" style={{ y: motionValues.rightSphereY, x: motionValues.rightSphereX }}>
         <span className="shape-cross" />
       </motion.div>
-      <span className="about-curve curve-left" />
-      <span className="about-curve curve-right" />
-      <span className="blue-dot blue-dot-left" />
-      <span className="blue-pill" />
-      <span className="blue-hex" />
+      <motion.span className="about-curve curve-left" style={{ y: motionValues.curveLeftY, x: motionValues.curveLeftX, rotate: motionValues.curveLeftRotate }} />
+      <motion.span className="about-curve curve-right" style={{ y: motionValues.curveRightY, x: motionValues.curveRightX, rotate: motionValues.curveRightRotate }} />
+      <motion.span className="blue-dot blue-dot-left" style={{ y: motionValues.blueDotY, x: motionValues.blueDotX }} />
+      <motion.span className="blue-pill" style={{ y: motionValues.bluePillY, x: motionValues.bluePillX, rotate: motionValues.bluePillRotate }} />
+      <motion.span className="blue-hex" style={{ y: motionValues.blueHexY, x: motionValues.blueHexX, rotate: motionValues.blueHexRotate }} />
     </div>
   )
 }
@@ -252,18 +252,32 @@ function About() {
   const sectionRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
   const motionValues = {
-    leftSphereY: useTransform(scrollYProgress, [0, 1], ['-6%', '10%']),
-    leftSphereScale: useTransform(scrollYProgress, [0, 1], [1.03, 0.98]),
-    leftCapsuleY: useTransform(scrollYProgress, [0, 1], ['10%', '-12%']),
-    leftCapsuleX: useTransform(scrollYProgress, [0, 1], ['-4%', '5%']),
-    leftCapsuleRotate: useTransform(scrollYProgress, [0, 1], [-38, -28]),
-    bottomOvalY: useTransform(scrollYProgress, [0, 1], ['8%', '-10%']),
-    bottomOvalScale: useTransform(scrollYProgress, [0, 1], [0.96, 1.04]),
-    rightBlobY: useTransform(scrollYProgress, [0, 1], ['-9%', '10%']),
-    rightBlobX: useTransform(scrollYProgress, [0, 1], ['5%', '-4%']),
-    rightBlobRotate: useTransform(scrollYProgress, [0, 1], [4, 13]),
-    rightSphereY: useTransform(scrollYProgress, [0, 1], ['9%', '-12%']),
-    rightSphereX: useTransform(scrollYProgress, [0, 1], ['-3%', '4%']),
+    leftSphereY: useTransform(scrollYProgress, [0, 1], ['-18%', '25%']),
+    leftSphereScale: useTransform(scrollYProgress, [0, 1], [1.1, 0.94]),
+    leftCapsuleY: useTransform(scrollYProgress, [0, 1], ['28%', '-30%']),
+    leftCapsuleX: useTransform(scrollYProgress, [0, 1], ['-14%', '15%']),
+    leftCapsuleRotate: useTransform(scrollYProgress, [0, 1], [-50, -16]),
+    bottomOvalY: useTransform(scrollYProgress, [0, 1], ['20%', '-28%']),
+    bottomOvalScale: useTransform(scrollYProgress, [0, 1], [0.9, 1.13]),
+    rightBlobY: useTransform(scrollYProgress, [0, 1], ['-25%', '28%']),
+    rightBlobX: useTransform(scrollYProgress, [0, 1], ['13%', '-15%']),
+    rightBlobRotate: useTransform(scrollYProgress, [0, 1], [-3, 22]),
+    rightSphereY: useTransform(scrollYProgress, [0, 1], ['26%', '-28%']),
+    rightSphereX: useTransform(scrollYProgress, [0, 1], ['-11%', '11%']),
+    curveLeftY: useTransform(scrollYProgress, [0, 1], ['18%', '-24%']),
+    curveLeftX: useTransform(scrollYProgress, [0, 1], ['-7%', '8%']),
+    curveLeftRotate: useTransform(scrollYProgress, [0, 1], [18, 44]),
+    curveRightY: useTransform(scrollYProgress, [0, 1], ['-20%', '24%']),
+    curveRightX: useTransform(scrollYProgress, [0, 1], ['8%', '-10%']),
+    curveRightRotate: useTransform(scrollYProgress, [0, 1], [-26, -6]),
+    blueDotY: useTransform(scrollYProgress, [0, 1], ['26%', '-34%']),
+    blueDotX: useTransform(scrollYProgress, [0, 1], ['-18%', '16%']),
+    bluePillY: useTransform(scrollYProgress, [0, 1], ['-32%', '34%']),
+    bluePillX: useTransform(scrollYProgress, [0, 1], ['20%', '-16%']),
+    bluePillRotate: useTransform(scrollYProgress, [0, 1], [-18, 36]),
+    blueHexY: useTransform(scrollYProgress, [0, 1], ['30%', '-30%']),
+    blueHexX: useTransform(scrollYProgress, [0, 1], ['-18%', '18%']),
+    blueHexRotate: useTransform(scrollYProgress, [0, 1], [-24, 34]),
   }
 
   return (
