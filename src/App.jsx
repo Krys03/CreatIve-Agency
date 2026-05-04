@@ -442,7 +442,7 @@ function Footer() {
 
 export default function App() {
   return (
-    <>
+    <div className="night-site">
       <Header />
       <CustomCursor />
       <main>
@@ -455,6 +455,6 @@ export default function App() {
         <CTA />
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
