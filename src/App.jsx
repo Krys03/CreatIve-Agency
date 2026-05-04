@@ -174,9 +174,9 @@ function Hero() {
 
 function ShowreelReveal() {
   return (
-    <section className="showreel-reveal grid-bg relative border-b border-line">
-      <div className="relative flex min-h-[92svh] items-start overflow-hidden pb-20 pt-24">
-        <div className="grid-layout absolute inset-x-0 top-14 z-10 grid grid-cols-4 items-start md:grid-cols-12">
+    <section className="showreel-reveal showreel-dark grid-bg relative border-b border-line">
+      <div className="relative flex items-start overflow-hidden py-8">
+        <div className="grid-layout absolute inset-x-0 top-8 z-10 grid grid-cols-4 items-start md:grid-cols-12">
           <motion.div
             variants={fadeUp}
             initial="hidden"
