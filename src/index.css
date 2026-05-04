@@ -24,6 +24,21 @@ body {
   min-width: 320px;
   overflow-x: hidden;
   background: #07090f;
+  transition:
+    background-color 320ms ease,
+    color 320ms ease;
+}
+
+html[data-theme="light"],
+body[data-theme="light"] {
+  color: #050505;
+  background: #ffffff;
+}
+
+html[data-theme="night"],
+body[data-theme="night"] {
+  color: #f4f7ff;
+  background: #07090f;
 }
 
 img {
@@ -122,6 +137,55 @@ a {
 
 .nav-link.is-active {
   color: #155bff;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.theme-toggle-track {
+  position: relative;
+  width: 2rem;
+  height: 1rem;
+  border: 1px solid rgba(5, 5, 5, 0.28);
+  border-radius: 999px;
+  transition:
+    border-color 260ms ease,
+    background-color 260ms ease;
+}
+
+.theme-toggle-dot {
+  position: absolute;
+  top: 50%;
+  left: 0.2rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #155bff;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  transition:
+    left 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms ease;
+}
+
+.theme-toggle.is-night .theme-toggle-track {
+  border-color: rgba(244, 247, 255, 0.32);
+  background: rgba(21, 91, 255, 0.08);
+}
+
+.theme-toggle.is-night .theme-toggle-dot {
+  left: 1.18rem;
+  box-shadow: 0 0 16px rgba(21, 91, 255, 0.42);
 }
 
 .play-button {
@@ -1136,6 +1200,12 @@ a {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.light-site {
+  min-height: 100svh;
+  color: #050505;
+  background: #ffffff;
 }
 
 .night-site {

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import CustomCursor from './components/CustomCursor'
 import ServicesFlip from './components/ServicesFlip'
@@ -78,7 +78,7 @@ const portfolioItems = [
   },
 ]
 
-function Header() {
+function Header({ isNight, onThemeToggle }) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-white/95 backdrop-blur-md">
       <div className="grid-layout flex h-20 items-center justify-between text-[11px] font-semibold uppercase tracking-[0.14em] text-ink">
@@ -100,9 +100,23 @@ function Header() {
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
-          <span className="h-2 w-2 rounded-full bg-electric" />
-          <span>FRIBOURG — GLOBAL</span>
+        <div className="flex items-center gap-4">
+          <button
+            type="button"
+            className={`theme-toggle ${isNight ? 'is-night' : ''}`}
+            onClick={onThemeToggle}
+            aria-label={isNight ? 'Passer en mode light' : 'Passer en mode night'}
+            data-cursor
+          >
+            <span className="theme-toggle-track">
+              <span className="theme-toggle-dot" />
+            </span>
+            <span>{isNight ? 'NIGHT' : 'LIGHT'}</span>
+          </button>
+          <div className="hidden items-center gap-3 sm:flex">
+            <span className="h-2 w-2 rounded-full bg-electric" />
+            <span>FRIBOURG — GLOBAL</span>
+          </div>
         </div>
       </div>
     </header>
@@ -441,9 +455,23 @@ function Footer() {
 }
 
 export default function App() {
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === 'undefined') return 'night'
+    return window.localStorage.getItem('voltage-theme') || 'night'
+  })
+  const isNight = theme === 'night'
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.body.dataset.theme = theme
+    window.localStorage.setItem('voltage-theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => setTheme((currentTheme) => (currentTheme === 'night' ? 'light' : 'night'))
+
   return (
-    <div className="night-site">
-      <Header />
+    <div className={isNight ? 'night-site' : 'light-site'}>
+      <Header isNight={isNight} onThemeToggle={toggleTheme} />
       <CustomCursor />
       <main>
         <Hero />
